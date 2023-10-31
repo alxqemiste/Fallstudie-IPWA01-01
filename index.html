@@ -1,11 +1,249 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>KleiderKarawane</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+
+    <style>
+        .firmenlogo {
+            max-width: 60px ;
+        }
+
+        #navbarToggler {
+            margin-right: 10px;
+            
+        }
+                
+        #cardFormular, #cardError {
+            display: none;
+  
+        }
+
+        @media (min-width: 768px) {
+            .firmenname {
+                font-size: 40px;
+            }
+            .card-footer {
+                display: none;
+            }
+        }
+
+        @media (min-width: 576px) and (max-width: 767px) {
+            .firmenname {
+                font-size: 30px;
+            }
+            .card-footer {
+                display: none;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .firmenname {
+                display: none;
+            }
+
+            .firmenlogo {
+                margin-top: 5px;
+            }
+            .card-text {
+                display: none;
+            }
+            .card-footer {
+                display: block;
+            }
+        }
+    </style>
+
+
 </head>
 <body>
-    <h1>Hello World</h1>
+
+    <header class="bg-light text-center">
+        <img src="./src/Logo.png" alt="KK" class="firmenlogo">
+        <span class="firmenname">KleiderKarawane</span>
+    </header>
+
+    <!--NavBar-->
+    <nav class="navbar navbar-expand-sm navbar-light bg-light ">
+        <a class="navbar-brand" href="#">
+            <!--muss irgendwie drin sein, damit der Toggler rechts ist TODO-->
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        
+        <div class="collapse navbar-collapse justify-content-center" id="navbarToggler">
+            <ul class="navbar-nav">
+                <li class="nav-item active">
+                    <a class="nav-link" href="#" id="navBarStartBtn">Start</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="navBarAboutBtn">Über Uns</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="navBarKrisenBtn">Krisengebiete 2023</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#" id="navBarSpendenBtn">Kleiderspende Registrieren</a>
+                </li>
+            </ul>
+        </div>
+            
+
+    </nav>
+
+
+
+    <!--Content-->
+    <main>
+        
+        <!--Section-->
+        <section id="cardWillkommen">
+            <div class="container mt-4 mb-4">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Willkommen beim Kleiderspendenportal</h4>
+                        <p class="card-text">
+                            Wir freuen uns, Sie auf unserer Plattform begrüßen zu dürfen. Unser gemeinnütziger Verein hat sich der Organisation von Kleiderspenden verschrieben und ermöglicht es Ihnen, einen aktiven Beitrag zur Unterstützung von Menschen in Krisengebieten zu leisten. <br>
+                            <br>
+                            Unsere Vision ist es, Kleidung und Hilfsgüter in die Regionen zu bringen, in denen sie am dringendsten benötigt werden. Was unser Portal einzigartig macht, ist die Möglichkeit, selbst zu entscheiden, in welche Krisenregion Ihre Kleiderspende gehen soll. Sie haben die Wahl, Ihre Spende persönlich an unserer Geschäftsstelle abzugeben oder eine Abholung zu arrangieren.
+                            <br>
+                            <br>
+                            Unsere Plattform macht es einfach, Ihre Kleiderspende zu registrieren und sicherzustellen, dass sie dorthin gelangt, wo sie gebraucht wird. Mit Ihrem Engagement helfen Sie, Menschen in Not zu unterstützen und einen positiven Einfluss auf die Welt zu haben.
+                            <br>
+                            <br>
+                            Wir danken Ihnen für Ihr Interesse an unserem Projekt und für Ihre Unterstützung. Gemeinsam können wir einen Unterschied machen. Erfahren Sie mehr über unser Spendenportal und wie Sie teilnehmen können.
+                            <br>
+                            <br>
+                            Vielen Dank, dass Sie sich uns anschließen!
+                        </p>
+                        <p class="card-footer">
+                            <a href="#">Show more</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="cardFormular">
+            <div class="container mt-4 mb-4">
+
+                <div class="card-group">
+                    <div class="card">
+
+                        <div class="card-header">
+                            <ul class="nav nav-tabs card-header-tabs">
+                              <li class="nav-item">
+                                <a class="nav-link active" href="#" id="btnUebergabe">Übergabe an der Geschäftsstelle</a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="#" id="btnAbholung">Abholung</a>
+                              </li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card-body">
+                                                       
+                            <div class="input-group" id="spenderName"> 
+                                <input type="text" class="form-control" placeholder="Vorname" id="inputVorname">
+                                <input type="text" class="form-control" placeholder="Nachname" id="inputNachname">
+                            </div>
+
+                            <div class="input-group">
+                                <input type="text" class="form-control" placeholder="Straße + Hausnummer" id="inputStraße">
+                            </div>
+
+                            <div class="input-group">
+                                <input type="number" class="form-control" placeholder="PLZ" id="inputPLZ">
+                                <input type="text" class="form-control" placeholder="Ort" id="inputOrt">
+                            </div>
+
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Art der Kleidung</span>
+                                </div>
+                                <select class="form-control" id="selectKleidung">
+                                    <option value="" disabled selected>Art der Kleidung</option>
+                                    <option>Alltagskleidung</option>
+                                    <option>Winterkleidung</option>
+                                    <option>Kinderkleidung</option>
+                                    <option>Babyausstattung</option>
+                                    <option>Schuhe</option>
+                                </select>
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="button" id="addBtn">Hinzufügen</button>
+                                </div>  
+                            </div>
+
+                            <select class="form-control" id="selectKrisengebiet">
+                                <option value="" disabled selected>Krisengebiet</option>
+                                <option>Ukraine</option>
+                                <option>Haiti</option>
+                                <option>Burkina Faso</option>
+                                <option>Südsudan</option>
+                                <option>Syrien</option>
+                                <option>Jemen</option>
+                                <option>Demokratische Republik Kongo</option>
+                                <option>Afghanistan</option>
+                                <option>Äthiopien</option>
+                                <option>Somalia</option>
+                            </select>
+
+                            
+                              
+
+                        </div>
+
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <ul class="list-group list-group-flush" id="listeKleider">
+                            </ul>
+
+                            <button class="btn btn-primary" id="submitBtn">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+
+        </section>
+
+        <section id="cardError">
+            <div class="container mt-4 mb-4">
+
+                <div class="card">
+                    <h5 class="card-header">Error 404</h5>
+                    <div class="card-body">
+                        <p class="card-text">Es tut uns leid! <br> Diese Seite ist leider noch nicht erstellt.</p>
+                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                    </div>
+                  </div>
+
+                
+            </div>
+
+        </div>
+
+
+        </section>
+
+
+    </main>
+
+    <!--Footer-->
+    <footer class="bg-light text-center py-3">
+        <p>© 2023 KleiderKarawane | Datenschutz | Impressum</p>
+    </footer>
+
+    <script src="./script.js"></script>
+
 </body>
 </html>
