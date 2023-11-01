@@ -103,15 +103,83 @@ addBtn.onclick = function () {
 submitBtn.onclick = function () {
     //console.log("SUBMIT")
 
+    
     if(artDerUebergabe === "Übergabe") {
-        console.log("Übergabe")
+        
+        if (checkIfArrayIsEmpty(listeKleidungsstücke) && checkIfInputIsFilled (selectKrisengebiet)) {
+            console.log("Success, Übergabe an Geschäftsstelle erfolgreich!")
+
+            let successCardBody = document.getElementById("successCardBody")
+
+            let k = ""
+
+            k += "<p class='card-text'>Kleidung: " 
+
+            for(i=0; i<listeKleidungsstücke.length; i++) {
+               if(listeKleidungsstücke.length === 1) {
+                k += listeKleidungsstücke[i];
+               } else {
+                k += listeKleidungsstücke[i] + " ,";
+               }
+                
+                
+            }
+            
+            k += "</p>"       
+            
+            successCardBody.innerHTML = k
+            
+            
+
+
+
+
+        } else { 
+            console.log("Fehler") //TODO Errorhandling
+        }
 
 
     } else if (artDerUebergabe === "Abholung") {
-        console.log("Abholung")
+        
+        let inputs = [inputVorname, inputNachname, inputStraße, inputPLZ, inputOrt, selectKrisengebiet]
+        let iterable = false
+
+        for (i = 0; i < inputs.length; i++) {
+            iterable = checkIfInputIsFilled(inputs[i]);
+        } 
+
+        if(iterable && checkIfArrayIsEmpty(listeKleidungsstücke)) {
+            console.log("Success, Abholung erfolgreich gebucht!")
+        } else {
+            console.log("Fehler") //TODO Errorhandling
+        }
+       
+
     } else {
-        console.log("Fehler")
+        console.log("Fehler") //TODO Errorhandling
     }
 
-
 }
+
+function checkIfArrayIsEmpty (arr) {
+    
+    if (arr.length > 0) {
+        selectKleidung.style["border-color"] = "green"
+        return true;
+    } else { 
+        selectKleidung.style["border-color"] = "red"
+        return false; }
+}
+
+function checkIfInputIsFilled (input) {
+    if (input.value != "") {
+        console.log("Erfolg in InputIsFilled");
+        input.style["border-color"] = "green";
+        return true; 
+    } else { 
+        console.log("Fehler in InputIsFilled");
+        input.style["border-color"] = "red";
+        return false; 
+    }
+}
+
