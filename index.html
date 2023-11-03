@@ -18,7 +18,7 @@
             
         }
                 
-        #cardFormular, #cardError, #inputVorname, #inputNachname, #inputStraße, #inputPLZ, #inputOrt {
+        #cardRegistrationForm, #cardError, #inputFirstName, #inputLastName, #inputStreet, #inputZIPCode, #inputCity {
             display: none;
   
         }
@@ -85,13 +85,13 @@
                     <a class="nav-link" href="#" id="navBarStartBtn">Start</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navBarAboutBtn">Über Uns</a>
+                    <a class="nav-link" href="#" id="navBarAboutUsBtn">Über Uns</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navBarKrisenBtn">Krisengebiete 2023</a>
+                    <a class="nav-link" href="#" id="navBarCrisesBtn">Krisengebiete 2023</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" id="navBarSpendenBtn">Kleiderspende Registrieren</a>
+                    <a class="nav-link" href="#" id="navBarDonationBtn">Kleiderspende Registrieren</a>
                 </li>
             </ul>
         </div>
@@ -105,7 +105,7 @@
     <main>
         
         <!--Section-->
-        <section id="cardWillkommen">
+        <section id="cardStart">
             <div class="container mt-4 mb-4">
                 <div class="card">
                     <div class="card-body">
@@ -133,7 +133,7 @@
 
         </section>
 
-        <section id="cardFormular">
+        <section id="cardRegistrationForm">
             <div class="container mt-4 mb-4">
 
                 <div class="card-group">
@@ -142,10 +142,10 @@
                         <div class="card-header">
                             <ul class="nav nav-tabs card-header-tabs">
                               <li class="nav-item">
-                                <a class="nav-link active" href="#" id="btnUebergabe">Übergabe an der Geschäftsstelle</a>
+                                <a class="nav-link active" href="#" id="btnHandover">Übergabe an der Geschäftsstelle</a>
                               </li>
                               <li class="nav-item">
-                                <a class="nav-link" href="#" id="btnAbholung">Abholung</a>
+                                <a class="nav-link" href="#" id="btnPickup">Abholung</a>
                               </li>
                             </ul>
                         </div>
@@ -153,24 +153,24 @@
                         <div class="card-body">
                                                        
                             <div class="input-group" id="spenderName"> 
-                                <input type="text" class="form-control" placeholder="Vorname" id="inputVorname">
-                                <input type="text" class="form-control" placeholder="Nachname" id="inputNachname">
+                                <input type="text" class="form-control" placeholder="Vorname" id="inputFirstName">
+                                <input type="text" class="form-control" placeholder="Nachname" id="inputLastName">
                             </div>
 
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Straße + Hausnummer" id="inputStraße">
+                                <input type="text" class="form-control" placeholder="Straße + Hausnummer" id="inputStreet">
                             </div>
 
                             <div class="input-group">
-                                <input type="number" class="form-control" placeholder="PLZ" id="inputPLZ">
-                                <input type="text" class="form-control" placeholder="Ort" id="inputOrt">
+                                <input type="number" minlength="5" maxlength="5" class="form-control" placeholder="PLZ" id="inputZIPCode">
+                                <input type="text" class="form-control" placeholder="Ort" id="inputCity">
                             </div>
 
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text">Art der Kleidung</span>
                                 </div>
-                                <select class="form-control" id="selectKleidung">
+                                <select class="form-control" id="selectClothes">
                                     <option value="" disabled selected>Art der Kleidung</option>
                                     <option>Alltagskleidung</option>
                                     <option>Winterkleidung</option>
@@ -183,7 +183,7 @@
                                 </div>  
                             </div>
 
-                            <select class="form-control" id="selectKrisengebiet">
+                            <select class="form-control" id="selectConflictArea">
                                 <option value="" disabled selected>Krisengebiet</option>
                                 <option>Ukraine</option>
                                 <option>Haiti</option>
@@ -206,7 +206,7 @@
 
                     <div class="card">
                         <div class="card-body">
-                            <ul class="list-group list-group-flush" id="listeKleider">
+                            <ul class="list-group list-group-flush" id="tableOfClothes">
                             </ul>
 
                             <button class="btn btn-primary" id="submitBtn">Submit</button>
@@ -225,7 +225,7 @@
                     <h5 class="card-header">Error 404</h5>
                     <div class="card-body">
                         <p class="card-text">Es tut uns leid! <br> Diese Seite ist leider noch nicht erstellt.</p>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
+                        <a class="btn btn-primary" onclick="showStart()">Dann leite mich um!</a>
                     </div>
                   </div>
 
@@ -243,12 +243,10 @@
                 <div class="card">
                     <h5 class="card-header">Danke für deine Hilfe!</h5>
                     <div class="card-body" id="successCardBody">
-                        <p class="card-text">testKleidung: </p>
-                        <p class="card-text">testKrisengebiet: </p>
-                        <p class="card-text">testDatum: </p>
-                        <p class="card-text">Uhrzeit: </p>
-                        <p class="card-text">Ort: </p>
                     </div>
+                    <div class="card-body text-muted">
+                        <button class="btn btn-success" id="btnNewDonation">Neue Spende</button>
+                      </div>
                   </div>
 
                 

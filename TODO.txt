@@ -1,3 +1,4 @@
-- verhindern, dass Kleiderarten mehrfach gewählt werden können
 
-- Successcard bei Kleidungsauflistung letztes Komma verhindern
+
+uhrzeit mit führenden nullen
+
