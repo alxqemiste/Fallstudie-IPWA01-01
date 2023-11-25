@@ -7,11 +7,16 @@
 
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
-
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    
     <style>
-        .firmenlogo {
+        .corporateSymbol {
             max-width: 60px ;
         }
+
+        .corporateName {
+                font-size: 40px;
+            }
 
         #navbarToggler {
             margin-right: 10px;
@@ -23,40 +28,16 @@
   
         }
 
-        
-
-        @media (min-width: 768px) {
-            .firmenname {
-                font-size: 40px;
-            }
-            .card-footer {
-                display: none;
-            }
-        }
-
-        @media (min-width: 576px) and (max-width: 767px) {
-            .firmenname {
-                font-size: 30px;
-            }
-            .card-footer {
-                display: none;
-            }
-        }
 
         @media (max-width: 575px) {
-            .firmenname {
+            .corporateName {
                 display: none;
             }
 
-            .firmenlogo {
+            .corporateSymbol {
                 margin-top: 5px;
             }
-            .card-text {
-                display: none;
-            }
-            .card-footer {
-                display: block;
-            }
+
         }
     </style>
 
@@ -65,16 +46,17 @@
 <body>
 
     <header class="bg-light text-center">
-        <img src="./src/Logo.png" alt="KK" class="firmenlogo">
-        <span class="firmenname">KleiderKarawane</span>
+        <img src="./src/Logo.png" alt="KK" class="corporateSymbol">
+        <span class="corporateName">KleiderKarawane</span>
     </header>
 
     <!--NavBar-->
     <nav class="navbar navbar-expand-sm navbar-light bg-light ">
         <a class="navbar-brand" href="#">
-            <!--muss irgendwie drin sein, damit der Toggler rechts ist TODO-->
+            <!--has to be there for the toggler to be aligned right-->
         </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         
@@ -110,7 +92,7 @@
                 <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">Willkommen beim Kleiderspendenportal</h4>
-                        <p class="card-text">
+                        <p class="card-text" id="cardStartText">
                             Wir freuen uns, Sie auf unserer Plattform begrüßen zu dürfen. Unser gemeinnütziger Verein hat sich der Organisation von Kleiderspenden verschrieben und ermöglicht es Ihnen, einen aktiven Beitrag zur Unterstützung von Menschen in Krisengebieten zu leisten. <br>
                             <br>
                             Unsere Vision ist es, Kleidung und Hilfsgüter in die Regionen zu bringen, in denen sie am dringendsten benötigt werden. Was unser Portal einzigartig macht, ist die Möglichkeit, selbst zu entscheiden, in welche Krisenregion Ihre Kleiderspende gehen soll. Sie haben die Wahl, Ihre Spende persönlich an unserer Geschäftsstelle abzugeben oder eine Abholung zu arrangieren.
@@ -124,9 +106,7 @@
                             <br>
                             Vielen Dank, dass Sie sich uns anschließen!
                         </p>
-                        <p class="card-footer">
-                            <a href="#">Show more</a>
-                        </p>
+                       
                     </div>
                 </div>
             </div>
@@ -260,10 +240,11 @@
     </main>
 
     <!--Footer-->
-    <footer class="bg-light text-center py-3">
+    <footer class="bg-light text-center py-3 footer static-bottom">
         <p>© 2023 KleiderKarawane | Datenschutz | Impressum</p>
     </footer>
 
+    
     <script src="./script.js"></script>
 
 </body>

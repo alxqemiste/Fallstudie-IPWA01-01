@@ -1,4 +1,5 @@
+ gui 
 
+kleidungsbug bei wechsel zw übergabe und abholung
 
-uhrzeit mit führenden nullen
-
+ausführlichere Kommentare

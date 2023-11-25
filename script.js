@@ -9,7 +9,8 @@
         const cardRegistrationForm = document.getElementById("cardRegistrationForm")
         const cardError = document.getElementById("cardError")
         const cardSuccess = document.getElementById("cardSuccess")
-        
+
+          
         //Card-Buttons
         const btnHandover = document.getElementById("btnHandover")
         const btnPickup = document.getElementById("btnPickup")
@@ -40,7 +41,8 @@
         navBarStartBtn.onclick = function () {
             showStart();
         }
-        
+
+               
         navBarAboutUsBtn.onclick = function () {
             showError();
         }
@@ -83,7 +85,7 @@
 
                 for(i=0; i<listOfClothes.length; i++) {
                     if (listOfClothes[i] === selectClothes.value) {
-                        console.log("Kleidungsstück wurde schon gewählt")
+                        //console.log("Kleidungsstück wurde schon gewählt")
                         alreadyChosen = true;
                     }
                 }
@@ -111,7 +113,7 @@
 
         
                 } else { 
-                    console.log("Fehler") //TODO Errorhandling
+                    //console.log("Fehler") //TODO Errorhandling
                 }
         
         
@@ -122,7 +124,7 @@
                               
         
             } else {
-                console.log("Fehler") //TODO Errorhandling
+                //console.log("Fehler") //TODO Errorhandling
             }
         
         }
@@ -136,6 +138,8 @@
             selectClothes.value = ""
             selectConflictArea.value = ""
             listOfClothes = []
+            
+            tableOfClothes.innerHTML = ""
 
             showRegistrationForm();
         }
@@ -168,6 +172,8 @@
             cardError.style.display = "none"
             cardSuccess.style.display = "none"
         }
+
+
 
         function checkZIPCode() {
             const digits = inputZIPCode.value.toString().slice(0,2)
@@ -202,10 +208,10 @@
 
     
             if(counter === 6 && checkIfArrayIsEmpty(listOfClothes)) {
-                console.log("Success, Abholung erfolgreich gebucht!")
+                //console.log("Success, Abholung erfolgreich gebucht!")
                 checkZIPCode();
             } else {
-                console.log("Fehler") //TODO Errorhandling
+                //console.log("Fehler") //TODO Errorhandling
             }
         }
         
@@ -235,13 +241,26 @@
 
             const date = new Date();
             const timeStampDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear()
-            const timeStampTime = date.getHours() + ":"  + date.getMinutes()
+            const timeStampTime = () => {
+                let hours 
+                let minutes
+                if(date.getHours().length < 2) {
+                    hours = "0" + date.getHours()
+                } else { hours = date.getHours()}
+
+                if(date.getMinutes().length < 2) {
+                    minutes = "0" + date.getMinutes()
+                } else { minutes = date.getMinutes()}
+
+                return hours + ":" + minutes
+            
+            }
+
             
             const successCardBody = document.getElementById("successCardBody")
         
             let k = ""
-            let clothes = ""
-
+            
             k += "<p class='card-text'>Kleidung: " + listOfClothes.join(", ")
 
             k += "</p> <p class='card-text'>Krisengebiet: "  
@@ -250,7 +269,7 @@
 
             k += "</p> <p class='card-text'>Datum: " + timeStampDate
             
-            k += "</p> <p class='card-text'>Uhrzeit: " + timeStampTime
+            k += "</p> <p class='card-text'>Uhrzeit: " + timeStampTime()
 
             k += "</p> <p class='card-text'>Ort: " + inputZIPCode.value + "</p>"
             
