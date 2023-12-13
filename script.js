@@ -104,6 +104,7 @@
         }
         
         submitBtn.onclick = function () {
+            
             if(kindOfTransaction === "Übergabe") {
                 
                 if (checkIfArrayIsEmpty(listOfClothes) && checkIfInputIsFilled (selectConflictArea)) {
@@ -134,7 +135,7 @@
             inputLastName.value = ""
             inputStreet.value = ""
             inputZIPCode.value = ""
-            inputCity.style.value = ""
+            inputCity.value = ""
             selectClothes.value = ""
             selectConflictArea.value = ""
             listOfClothes = []
@@ -163,6 +164,7 @@
 
         function showSuccess() {
             cardSuccess.style.display = "block"
+            cardRegistrationForm.style.display = "none"
 
         }
 
@@ -244,11 +246,13 @@
             const timeStampTime = () => {
                 let hours 
                 let minutes
-                if(date.getHours().length < 2) {
+                if(date.getHours() < 10) {
                     hours = "0" + date.getHours()
                 } else { hours = date.getHours()}
 
-                if(date.getMinutes().length < 2) {
+                
+                if(date.getMinutes() < 10) {
+
                     minutes = "0" + date.getMinutes()
                 } else { minutes = date.getMinutes()}
 
