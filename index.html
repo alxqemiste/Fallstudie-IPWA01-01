@@ -23,7 +23,7 @@
             
         }
                 
-        #cardRegistrationForm, #cardError, #inputFirstName, #inputLastName, #inputStreet, #inputZIPCode, #inputCity {
+        #cardRegistrationForm, #cardError, #cardLoremIpsum, #inputFirstName, #inputLastName, #inputStreet, #inputZIPCode, #inputCity {
             display: none;
   
         }
@@ -212,10 +212,26 @@
                 
             </div>
 
-        </div>
+        </section>
 
+        <section id="cardLoremIpsum">
+            <div class="container mt-4 mb-4">
+
+                <div class="card">
+                    <h5 class="card-header">Impressum/Datenschutz</h5>
+                    <div class="card-body">
+                        <p class="card-text">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+                        <a class="btn btn-primary" onclick="showStart()">Zurück</a>
+                    </div>
+                </div>
+
+                
+            </div>
 
         </section>
+
+
+     
 
         <section id="cardSuccess">
             <div class="container mt-4 mb-4">
@@ -227,21 +243,22 @@
                     <div class="card-body text-muted">
                         <button class="btn btn-success" id="btnNewDonation">Neue Spende</button>
                       </div>
-                  </div>
+                </div>
 
                 
             </div>
 
-        </div>
-
-
         </section>
+
+
+    
 
     </main>
 
     <!--Footer-->
     <footer class="bg-light text-center py-3 footer static-bottom">
-        <p>© 2023 KleiderKarawane | Datenschutz | Impressum</p>
+        <p>© 2023 KleiderKarawane</p> 
+        <a  href="#" onclick="showLoremIpsum()">Datenschutz</a> | <a  href="#" onclick="showLoremIpsum()">Impressum</a>
     </footer>
 
     

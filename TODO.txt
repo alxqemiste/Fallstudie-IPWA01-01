@@ -1,16 +1,9 @@
- gui 
-
-kleidungsbug bei wechsel zw übergabe und abholung
 
 ausführlichere Kommentare
 
-Footer 
-- Impressum (QUelle für Bilder)
 
 
 
-
-Erfolgreiche Registration -> die ersten Karten ausblenden?
 
 
 
