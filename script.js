@@ -31,9 +31,10 @@ let kindOfTransaction = "Übergabe"
 let listOfClothes = []
 
 
-//function, that starts the webapplication with the start-page
+//function, that starts the webapplication with the start-page. It also clears the sessionStorage, so there won't be any data left from previous uses.
 window.onload = function() {
     showStart();
+    sessionStorage.clear()
 }
 
 /*
@@ -129,6 +130,7 @@ This eventhandler takes care of the validation of the inputfields according to t
 If "Handover" is chosen, it calls the functions "checkIfArrayIsEmpty" and "checkIfInputIsEmpty" which will return true, if inputs were made.
 Then it will build the successcard.
 If "Pickup" is chosen, the eventhandler will call the function "checkInputs".
+Also both variations save the clothes and the conflictarea into the sessionstorage.
 There should be now failure until now, but if in some case the kind of transaction isn't one of these two options, there will be an alert to restart the page.
 */ 
 submitBtn.onclick = function () {
@@ -139,16 +141,20 @@ submitBtn.onclick = function () {
             
             inputZIPCode.value = "93049"
             buildSuccessCard();
-
+            writeSessionStorage("clothes", listOfClothes)
+            writeSessionStorage("conflictArea", selectConflictArea.value)
+            
 
         } else { 
-            //console.log("Fehler") //TODO Errorhandling
+            //Errorhandling not necessary, because the functions in the if-clause already light up the borders of missing inputs, if the function returns false
         }
 
 
     } else if (kindOfTransaction === "Abholung") {
 
         checkInputs();
+        writeSessionStorage("clothes", listOfClothes)
+        writeSessionStorage("conflictArea", selectConflictArea.value)
         
                         
 
@@ -159,7 +165,7 @@ submitBtn.onclick = function () {
 }
 
 
-//This eventhandler reloads the registrationform
+//This eventhandler reloads the registrationform and clears the sessionStorage
 btnNewDonation.onclick = function () {
     inputFirstName.value = ""
     inputLastName.value = ""
@@ -172,6 +178,7 @@ btnNewDonation.onclick = function () {
     
     tableOfClothes.innerHTML = ""
 
+    sessionStorage.clear()
     showRegistrationForm();
 }
 
@@ -250,15 +257,22 @@ function checkInputs () {
 }
 
 /*
-This compares the first two digits of the zipcode to the String "93".
+This compares the first two digits of the zipcode to the String "93". 
+In case the comparison returns true, it will build the successcard and write every detail of the address into the sessionstorage for later use in a database.
+If the address is too far away from the given zipcode, the page will alert, that the distance is to far.
 */
 function checkZIPCode() {
     const digits = inputZIPCode.value.toString().slice(0,2)
     if (digits === "93") {
         buildSuccessCard();
+        writeSessionStorage("firstName", inputFirstName.value)
+        writeSessionStorage("lastName", inputLastName.value)
+        writeSessionStorage("street", inputStreet.value)
+        writeSessionStorage("zip", inputZIPCode.value)
+        writeSessionStorage("city", inputCity.value)
     } else {
         alert("Es tut uns leid! Leider ist Deine Abholungsadresse zu weit weg von unserer Regensburger Filiale!")
-        //TODO Fehlerhandling
+        
     }
 
     
@@ -301,6 +315,7 @@ function checkIfInputIsFilled (input) {
 This function will build the successcard if every check wen't fine until now.
 At first it introduces the constant "date" for a timestamp.
 Then it will build the timeStampDate and the timeStampTime.
+Both timestamps will be stored in the sessionStorage.
 
 Then it will build the body of the successcard, using the timestamp and the listOfClothes to return the data to the customer.
 Finally it will call the function "showSuccess" to show the card and hide the others.
@@ -310,6 +325,8 @@ function buildSuccessCard () {
     //Building the timestamp
     const date = new Date();
     const timeStampDate = date.getDate() + "." + (date.getMonth() + 1) + "." + date.getFullYear()
+    writeSessionStorage("date", timeStampDate)
+
     const timeStampTime = () => {
         let hours 
         let minutes
@@ -321,10 +338,13 @@ function buildSuccessCard () {
         if(date.getMinutes() < 10) { //add a zero, if it only has one digit
             minutes = "0" + date.getMinutes()
         } else { minutes = date.getMinutes()}
+    
 
         return hours + ":" + minutes
     
     }
+
+    writeSessionStorage("time", timeStampTime())
 
     
     //Building the card
@@ -358,5 +378,10 @@ function showLoremIpsum() {
     cardLoremIpsum.style.display = "block"
 }
 
+//TODO komments
+function writeSessionStorage(key, value) {
+    sessionStorage.setItem(key, value)
+
+}
 
 
