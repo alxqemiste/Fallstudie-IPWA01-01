@@ -136,28 +136,19 @@ There should be now failure until now, but if in some case the kind of transacti
 submitBtn.onclick = function () {
     
     if(kindOfTransaction === "Übergabe") {
-        
         if (checkIfArrayIsEmpty(listOfClothes) && checkIfInputIsFilled (selectConflictArea)) {
             
             inputZIPCode.value = "93049"
             buildSuccessCard();
             writeSessionStorage("clothes", listOfClothes)
             writeSessionStorage("conflictArea", selectConflictArea.value)
-            
-
         } else { 
             //Errorhandling not necessary, because the functions in the if-clause already light up the borders of missing inputs, if the function returns false
         }
-
-
     } else if (kindOfTransaction === "Abholung") {
-
         checkInputs();
         writeSessionStorage("clothes", listOfClothes)
         writeSessionStorage("conflictArea", selectConflictArea.value)
-        
-                        
-
     } else {
         alert("Es ist ein Fehler aufgetreten. Bitte lade die Seite erneut!")
     }
@@ -274,9 +265,6 @@ function checkZIPCode() {
         alert("Es tut uns leid! Leider ist Deine Abholungsadresse zu weit weg von unserer Regensburger Filiale!")
         
     }
-
-    
-    
 }
 
 
@@ -378,7 +366,11 @@ function showLoremIpsum() {
     cardLoremIpsum.style.display = "block"
 }
 
-//TODO komments
+/*
+This function gets called multiple times in the script with two parameters.
+One is the key and one the value. Both get stored in the sessionstorage of the browser as an example of how to store the data.
+In reality, we would for example build an object with all the important information and send it to the backend to store it in a database, where we could read it to send the pickupcars to the adresses.
+*/
 function writeSessionStorage(key, value) {
     sessionStorage.setItem(key, value)
 
